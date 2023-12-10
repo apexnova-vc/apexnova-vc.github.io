@@ -4,16 +4,16 @@ import {useLazy} from '../hooks/useLazy';
 
 function AppRoutes () {
   // Lazy-loaded components using the useLazy hook
-  const LazyFeed = useLazy(() => import('../screens/Feed'));
+  const LazyFeed = useLazy(() => import('../screens/Home'));
   const LazyAbout = useLazy(() => import('../screens/About'));
-  const LazyQuestion = useLazy(() => import('../screens/Question'));
+  const LazyQuestion = useLazy(() => import('../screens/QuestionDetail'));
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LazyFeed />} />
         <Route path="/about" element={<LazyAbout />} />
-        <Route path="/some-component" element={<LazyQuestion />} />
+        <Route path="/questions/:id" element={<LazyQuestion />} />
       </Routes>
     </BrowserRouter>
   );

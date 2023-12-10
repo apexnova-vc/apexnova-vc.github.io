@@ -4,23 +4,27 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: GetQuestions
+// GraphQL query operation: GetQuestionDetail
 // ====================================================
 
-export interface GetQuestions_questions_author {
+export interface GetQuestionDetail_question_author {
   __typename: "User";
   id: string;
   name: string;
 }
 
-export interface GetQuestions_questions {
+export interface GetQuestionDetail_question {
   __typename: "Question";
   id: string;
   title: string;
   content: string;
-  author: GetQuestions_questions_author | null;
+  author: GetQuestionDetail_question_author | null;
 }
 
-export interface GetQuestions {
-  questions: (GetQuestions_questions | null)[] | null;
+export interface GetQuestionDetail {
+  question: GetQuestionDetail_question | null;
+}
+
+export interface GetQuestionDetailVariables {
+  id: string;
 }
