@@ -6,7 +6,7 @@ function AppRoutes () {
   // Lazy-loaded components using the useLazy hook
   const LazyFeed = useLazy(() => import('../screens/Home'));
   const LazyAbout = useLazy(() => import('../screens/About'));
-  const LazyQuestion = useLazy(() => import('../screens/QuestionDetail'));
+  const LazyQuestion = useLazy(() => import('../core/QuestionDetail'));
 
   return (
     <BrowserRouter>
@@ -14,6 +14,7 @@ function AppRoutes () {
         <Route path="/" element={<LazyFeed />} />
         <Route path="/about" element={<LazyAbout />} />
         <Route path="/questions/:id" element={<LazyQuestion />} />
+        {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Routes>
     </BrowserRouter>
   );

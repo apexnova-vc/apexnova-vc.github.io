@@ -1,33 +1,34 @@
-import React, {createContext, useContext, useState, ReactNode} from 'react';
-// TODO
+import React, {createContext, useContext, useState, ReactNode, useEffect} from 'react';
+import {useQuery, gql} from '@apollo/client';
+import {ContextGetUserById, ContextGetUserByIdVariables} from '../generated/ContextGetUserById';
 
-// Define the User type
+// GraphQL query to fetch user by ID
+const GET_USER_BY_ID_QUERY = gql`
+  query ContextGetUserById($id: ID!) {
+    user(id: $id) {
+      id
+      name
+    }
+  }
+`;
+
+// User type
 type User = {
     id: string;
     name: string;
     // Add other user properties here
 };
 
-// Define the Question type
-type Question = {
-    id: string;
-    title: string;
-    content: string;
-    // Add other question properties here
-};
-
-// Define the shape of your custom store
+// AppStore interface
 interface AppStore {
     user: User | null;
     setUser: (user: User | null) => void;
-    question: Question | null;
-    setQuestion: (question: Question | null) => void;
 }
 
-// Create the context with an initial undefined value
+// AppContext creation with initial undefined value
 const AppContext = createContext<AppStore | undefined>(undefined);
 
-// Create a custom hook to access the context
+// Custom hook to use the AppContext
 export function useAppContext () {
     const context = useContext(AppContext);
     if (!context) {
@@ -36,28 +37,50 @@ export function useAppContext () {
     return context;
 }
 
-// Create a provider component to wrap your app
+// AppProvider component props interface
 interface AppProviderProps {
     children: ReactNode;
 }
 
+// AppProvider component definition
 export function AppProvider ({children}: AppProviderProps) {
-    // Define your custom store state and functions for user
     const [ user, setUser ] = useState<User | null>(null);
 
-    // Define your custom store state and functions for question
-    const [ question, setQuestion ] = useState<Question | null>(null);
+    // Fetch user by ID using Apollo Client's useQuery
+    const {loading, error} = useQuery<ContextGetUserById, ContextGetUserByIdVariables>(GET_USER_BY_ID_QUERY, {
+        variables: {id: "65759851698d692b9fd6d097"},
+        onCompleted: (data) => {
+            if (data && data.user) {
+                setUser(data.user);
+            } else {
+                setUser(null); // User not found, set to null
+            }
+        },
+        onError: () => {
+            setUser(null); // On error, set user to null
+        },
+        skip: user !== null, // Skip the query if user is already set
+    });
 
-    // You can add more state and functions as needed
+    // If the query is done loading and no user is found, render nothing or a 404 component
+    useEffect(() => {
+        if (!loading && !error && !user) {
+            // navigate('/404');
+            // Here you could navigate to a 404 page or set a state to indicate that the user was not found
+        }
+    }, [ user, loading, error ]);
 
-    // Provide the custom store via context
     const appStore: AppStore = {
         user,
         setUser,
-        question,
-        setQuestion,
-        // Add more properties and methods here
     };
 
-    return <AppContext.Provider value={appStore}>{children}</AppContext.Provider>;
+    return (
+        <AppContext.Provider value={appStore}>
+            {children}
+        </AppContext.Provider>
+    );
 }
+
+// Export the context for use in other components
+export default AppContext;
