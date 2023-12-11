@@ -28,4 +28,5 @@ export interface CreateQuestion {
 export interface CreateQuestionVariables {
   title: string;
   content: string;
+  authorId: string;
 }

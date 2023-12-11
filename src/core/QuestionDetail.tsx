@@ -53,12 +53,23 @@ export default function QuestionDetail () {
         onCompleted: () => navigate('/'),
     });
 
-    const [ deleteQuestion ] = useMutation<DetailViewDeleteQuestion, DetailViewDeleteQuestionVariables>(DELETE_QUESTION_MUTATION, {
-        variables: {
-            id: id ?? ""
+    const [ deleteQuestion ] = useMutation<DetailViewDeleteQuestion, DetailViewDeleteQuestionVariables>(
+        DELETE_QUESTION_MUTATION, {
+        variables: {id: id ?? ""},
+        update: (cache) => {
+            cache.modify({
+                fields: {
+                    questions (existingQuestionsRefs, {readField}) {
+                        return existingQuestionsRefs.filter(
+                            (questionRef: any) => id !== readField('id', questionRef)
+                        );
+                    }
+                }
+            });
         },
-        onCompleted: () => navigate('/'),
-    });
+        onCompleted: () => navigate('/')
+    }
+    );
 
     useEffect(() => {
         if (data && data.question) {
@@ -81,7 +92,7 @@ export default function QuestionDetail () {
 
     return (
         <Box sx={styles.container}>
-            {data && data.question && (
+            {data?.question && (
                 <>
                     <Typography variant="h5" component="h2" sx={{mb: 2}}>
                         {data.question.title}

@@ -1,5 +1,6 @@
 import React, {createContext, useContext, useState, ReactNode, useEffect} from 'react';
 import {useQuery, gql} from '@apollo/client';
+import CircularProgress from '@mui/material/CircularProgress';
 import {ContextGetUserById, ContextGetUserByIdVariables} from '../generated/ContextGetUserById';
 
 // GraphQL query to fetch user by ID
@@ -46,8 +47,8 @@ interface AppProviderProps {
 export function AppProvider ({children}: AppProviderProps) {
     const [ user, setUser ] = useState<User | null>(null);
 
-    // Fetch user by ID using Apollo Client's useQuery
-    const {loading, error} = useQuery<ContextGetUserById, ContextGetUserByIdVariables>(GET_USER_BY_ID_QUERY, {
+    const {loading, error} = useQuery<ContextGetUserById, ContextGetUserByIdVariables>(
+        GET_USER_BY_ID_QUERY, {
         variables: {id: "65759851698d692b9fd6d097"},
         onCompleted: (data) => {
             if (data && data.user) {
@@ -60,13 +61,12 @@ export function AppProvider ({children}: AppProviderProps) {
             setUser(null); // On error, set user to null
         },
         skip: user !== null, // Skip the query if user is already set
-    });
+    }
+    );
 
-    // If the query is done loading and no user is found, render nothing or a 404 component
     useEffect(() => {
         if (!loading && !error && !user) {
-            // navigate('/404');
-            // Here you could navigate to a 404 page or set a state to indicate that the user was not found
+            // You can navigate to a 404 page or handle the "user not found" case here
         }
     }, [ user, loading, error ]);
 
@@ -74,6 +74,11 @@ export function AppProvider ({children}: AppProviderProps) {
         user,
         setUser,
     };
+
+    if (loading) {
+        // Show a spinner while loading
+        return <CircularProgress />;
+    }
 
     return (
         <AppContext.Provider value={appStore}>
