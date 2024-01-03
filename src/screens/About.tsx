@@ -1,8 +1,8 @@
 // src/components/About.js
-import React from 'react';
+import React from "react";
 
-function About () {
-    return <div>About Page</div>;
+function About() {
+  return <div>About Page</div>;
 }
 
 export default About;

@@ -1,6 +1,6 @@
-import puppeteer, { Browser, Page } from 'puppeteer';
+import puppeteer, { Browser, Page } from "puppeteer";
 
-describe('HomePage E2E Test', () => {
+describe("HomePage E2E Test", () => {
   let browser: Browser;
   let page: Page;
 
@@ -8,7 +8,7 @@ describe('HomePage E2E Test', () => {
     // Launch a new browser
     browser = await puppeteer.launch({
       headless: "new",
-      args: ['--enable-javascript']
+      args: ["--enable-javascript"],
     });
     page = await browser.newPage();
   });
@@ -18,13 +18,13 @@ describe('HomePage E2E Test', () => {
     await browser.close();
   });
 
-  test('Check if homepage has content', async () => {
+  test("Check if homepage has content", async () => {
     // Navigate to the homepage
-    await page.goto('http://localhost:3000/'); // Replace with the actual URL of your homepage
+    await page.goto("http://localhost:3000/"); // Replace with the actual URL of your homepage
 
     // Find and extract text content
     const textContent = await page.evaluate(() => document.body.textContent);
-    
+
     // js is still not enabled??
     // Check if the page has any text content
     expect(textContent).toBeTruthy();

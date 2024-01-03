@@ -1,12 +1,12 @@
-import React from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {useLazy} from '../hooks/useLazy';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useLazy } from "../hooks/useLazy";
 
-function AppRoutes () {
+function AppRoutes() {
   // Lazy-loaded components using the useLazy hook
-  const LazyFeed = useLazy(() => import('../screens/Home'));
-  const LazyAbout = useLazy(() => import('../screens/About'));
-  const LazyQuestion = useLazy(() => import('../core/QuestionDetail'));
+  const LazyFeed = useLazy(() => import("../screens/Home"));
+  const LazyAbout = useLazy(() => import("../screens/About"));
+  const LazyQuestion = useLazy(() => import("../core/QuestionDetail"));
 
   return (
     <BrowserRouter>
