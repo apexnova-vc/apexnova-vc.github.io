@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ComponentType, lazy, Suspense, ReactElement } from "react";
 
 // useLazy hook to dynamically import a component
-export const useLazy = <T extends ComponentType<never>>(
+export const useLazy = <T extends ComponentType<any>>(
   importFunc: () => Promise<{ default: T }>,
   displayName?: string,
 ): ((props: React.ComponentProps<T>) => ReactElement) => {

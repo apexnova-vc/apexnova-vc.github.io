@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { useQuery, useMutation, gql } from "@apollo/client";
 import {
@@ -45,8 +46,7 @@ const QuestionFeed: React.FC = () => {
           fields: {
             questions(existingQuestionsRefs = [], { readField }) {
               return existingQuestionsRefs.filter(
-                (questionRef: unknown) =>
-                  deleteId !== readField("id", questionRef),
+                (questionRef: any) => deleteId !== readField("id", questionRef),
               );
             },
           },

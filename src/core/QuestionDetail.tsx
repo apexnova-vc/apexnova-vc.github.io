@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from "react";
 import { useQuery, useMutation, gql } from "@apollo/client";
 import { useParams, useNavigate } from "react-router-dom";
@@ -84,7 +85,7 @@ export default function QuestionDetail() {
         fields: {
           questions(existingQuestionsRefs, { readField }) {
             return existingQuestionsRefs.filter(
-              (questionRef: unknown) => id !== readField("id", questionRef),
+              (questionRef: any) => id !== readField("id", questionRef),
             );
           },
         },
