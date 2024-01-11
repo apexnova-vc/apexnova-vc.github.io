@@ -20,3 +20,6 @@ test("renders the QuestionForm component", () => {
   // For example, you might check for a form element, a title, or a specific text.
   expect(screen.getByText("Submit")).toBeInTheDocument();
 });
+
+// render
+// second unit for functions
