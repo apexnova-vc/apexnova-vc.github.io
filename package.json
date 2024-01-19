@@ -99,12 +99,6 @@
       }
     }
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "babel": {
     "presets": [
       [
