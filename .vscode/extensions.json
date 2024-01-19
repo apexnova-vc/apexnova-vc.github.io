@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint", // ESLint
+    "stylelint.vscode-stylelint", // Stylelint
+    "redhat.vscode-yaml", // YAML
+    "christian-kohler.npm-intellisense", // NPM Intellisense
+    "ms-edgedevtools.vscode-edge-devtools", // Edge Developer Tools
+    "bradlc.vscode-tailwindcss" // Tailwind CSS Intellisense
+  ],
+  "unwantedRecommendations": [
+    "aaron-bond.better-comments", // Better Comments
+    "coenraads.bracket-pair-colorizer-2", // Bracket Pair Colorizer 2
+    "esbenp.prettier-vscode", // Prettier
+    "ms-vscode.vscode-typescript-tslint-plugin" // TSLint
+  ]
+}
