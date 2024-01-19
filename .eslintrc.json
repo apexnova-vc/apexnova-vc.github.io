@@ -1,41 +1,42 @@
 {
-    "parser": "@typescript-eslint/parser",
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:react/recommended",
-      "plugin:react-hooks/recommended",
-      "plugin:prettier/recommended"
-    ],
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": 2020,
-      "sourceType": "module"
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "settings": {
-      "react": {
-        "version": "detect"
+    "ecmaVersion": 2021, // ES12
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react", // need for settings
+    "@typescript-eslint" // only list rules need to override in rules section
+  ],
+  "extends": [
+    "eslint:recommended", // for js
+    "plugin:@typescript-eslint/recommended", // for ts
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended" // this will turn off rules that prettier will handle
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    // Custom rules or overrides
+    "no-empty-function": 0,
+    "no-console": 0, // Means warning
+    "@typescript-eslint/no-unused-vars": [
+      1,
+      {
+        "argsIgnorePattern": "_*"
       }
-    },
-    "rules": {
-      // Custom rules or overrides
-      "@typescript-eslint/no-unused-vars": [
-          1,
-          {
-              "argsIgnorePattern": "_*"
-          }
-      ]
-    },
-    "env": {
-      "browser": true,
-      "es2021": true
-    },
-    "plugins": [
-      "react",
-      "@typescript-eslint",
-      "react-hooks"
     ]
+  },
+  "env": {
+    "browser": true,
+    "es2021": true
   }
-  
+}
