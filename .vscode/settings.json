@@ -1,24 +1,57 @@
 {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.formatOnSave": true,
+  /*
+      非特殊情况请勿修改此文件, 鼠标放在具体语句上会有vscode自带的解释
+  */
+  "eslint.options": {
+    "configFile": ".eslintrc.json"
+  },
+  "stylelint.configFile": ".stylelintrc.json",
+  "stylelint.validate": [
+    "css",
+    "sass",
+    "scss",
+    "less",
+  ],
+  "[scss]": { // .scss
+    "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll.stylelint": true
     },
-    "[javascript]": {
-      "editor.formatOnSave": false
+  },
+  "[less]": { // .less
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
     },
-    "[javascriptreact]": {
-      "editor.formatOnSave": false
+  },
+  "[css]": { // .css for Tailwind CSS
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
     },
-    "[typescript]": {
-      "editor.formatOnSave": false
+  },
+  "[javascript]": { // .js
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
     },
-    "[typescriptreact]": {
-      "editor.formatOnSave": false
+  },
+  "[typescript]": { // .ts
+    "editor.formatOnSave": false, // .ts // 阻止vscode自带的format on save，否则会overrride eslint/prettier format
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true // eslint会自动format以及修改错误，这个不需要的话可以讨论下，可能fixAll会出现一些不想有的改动
     },
-    "eslint.alwaysShowStatus": true,
-    "eslint.format.enable": true,
-    "prettier.disableLanguages": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-    // ... any other language-specific settings
-  }
-  
+  },
+  "[typescriptreact]": { // .tsx
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+  },
+  /*
+      editor本身相关行为， 现在的主要作用是所有文件都使用tab作为indent，而且tab = 2 space
+  */
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+}
