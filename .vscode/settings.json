@@ -3,7 +3,7 @@
       非特殊情况请勿修改此文件, 鼠标放在具体语句上会有vscode自带的解释
   */
   "eslint.options": {
-    "configFile": ".eslintrc.json"
+    "overrideConfigFile": ".eslintrc.json"
   },
   "stylelint.configFile": ".stylelintrc.json",
   "stylelint.validate": [
@@ -12,6 +12,9 @@
     "scss",
     "less",
   ],
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "[scss]": { // .scss
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
@@ -48,20 +51,16 @@
       "source.fixAll.eslint": true
     },
   },
+  "[javascriptreact]": { // .jsx
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+  },
   /*
       editor本身相关行为， 现在的主要作用是所有文件都使用tab作为indent，而且tab = 2 space
   */
   "editor.detectIndentation": false,
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
-  "[css][less][scss]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": "explicit"
-    }
-  },
-  "[javascript][typescript][typescriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    }
-  },
 }
