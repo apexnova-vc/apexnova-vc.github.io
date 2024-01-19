@@ -1,5 +1,5 @@
 module.exports = {
-    preset: 'ts-jest',
-    testEnvironment: 'node',
-    // your other Jest configuration
+  preset: "ts-jest",
+  testEnvironment: "node",
+  // your other Jest configuration
 };
