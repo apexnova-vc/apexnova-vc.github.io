@@ -1,17 +1,17 @@
 body {
-  background-color: #f0f0f0;
   font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
 }
 
 .container {
   width: 80%;
-  margin: auto;
   padding: 20px;
+  margin: auto;
 }
 
 .header {
-  text-align: center;
   padding: 20px 0;
+  text-align: center;
 }
 
 .header h1 {
@@ -20,13 +20,13 @@ body {
 }
 
 .content {
-  background-color: #fff;
   padding: 20px;
+  background-color: #fff;
   border-radius: 8px;
 }
 
 .footer {
-  text-align: center;
   padding: 20px 0;
   color: #666;
+  text-align: center;
 }
