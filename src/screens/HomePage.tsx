@@ -1,10 +1,6 @@
 import React from "react";
-import QuestionForm from "../core/QuestionForm";
-import QuestionFeed from "../core/QuestionFeed";
-import Container from "@mui/material/Container";
-import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { Container, CssBaseline, Box, Typography } from "@mui/material";
+import "./HomePage.css";
 
 function HomePage(): JSX.Element {
   return (
@@ -14,8 +10,6 @@ function HomePage(): JSX.Element {
         <Typography variant="h4" component="h1" gutterBottom>
           Quora-like App
         </Typography>
-        <QuestionForm />
-        <QuestionFeed />
       </Box>
     </Container>
   );

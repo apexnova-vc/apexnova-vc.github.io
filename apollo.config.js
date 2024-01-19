@@ -3,7 +3,7 @@ export default {
     service: {
       name: "your-service-name",
       // URL to the GraphQL API
-      url: "http://localhost:3005/graphql",
+      url: process.env.REACT_APP_GRAPHQL_URI || "http://localhost:3005/graphql",
     },
     // Files processed by the Apollo CLI
     includes: ["src/**/*.tsx", "src/**/*.ts"],

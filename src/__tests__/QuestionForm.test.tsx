@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MockedProvider } from "@apollo/client/testing";
-import QuestionForm from "../core/QuestionForm";
+import QuestionForm from "../components/QuestionForm";
 
 // Mock the AppContext
 jest.mock("../context/AppContext", () => ({

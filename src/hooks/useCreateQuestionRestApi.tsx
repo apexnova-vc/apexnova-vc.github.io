@@ -1,45 +1,26 @@
-// Define a local GraphQL mutation to update the cache
+import axios from "axios";
 
-// Define the type for the question input (adjust as per your GraphQL types)
+export const useCreatePostRestApi = () => {
+  const createPost = async (title: string, body: string, userId: number) => {
+    try {
+      const response = await axios.post(
+        "https://jsonplaceholder.typicode.com/posts",
+        {
+          title,
+          body,
+          userId,
+        },
+      );
 
-export const useCreateQuestionRestApi = () => {
-  // Apollo client mutation to update the cache
-  const createQuestion = async (
-    title: string,
-    content: string,
-    authorId: string,
-  ) => {
-    const response = await fetch("http://localhost:3005/questions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ title, content, authorId }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Error: ${response.status}`);
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        throw new Error(`Error: ${error.response?.status}`);
+      } else {
+        throw new Error("An error occurred while creating the post");
+      }
     }
-
-    const data = await response.json();
-
-    // Update Apollo cache after successful REST API call
-    // updateCache({
-    //   variables: {
-    //     question: {
-    //       id: data.id,
-    //       title: data.title,
-    //       content: data.content,
-    //       author: {
-    //         id: authorId,
-    //         name: data.author.name, // Assuming the response includes the author's name
-    //       },
-    //     },
-    //   },
-    // });
-
-    return data;
   };
 
-  return createQuestion;
+  return { createPost };
 };

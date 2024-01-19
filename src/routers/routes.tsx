@@ -1,15 +1,14 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../core/Home";
-import JobDetailsPage from "../core/JobDetailsPage";
-// import { useLazy } from "../hooks/useLazy";
+import AboutPage from "../screens/AboutPage";
+import HomePage from "../screens/HomePage";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/detail/:id" element={<JobDetailsPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<AboutPage />} />
       </Routes>
     </BrowserRouter>
   );
