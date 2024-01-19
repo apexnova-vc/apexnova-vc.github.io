@@ -1,18 +1,33 @@
+import { Button } from "@mui/material";
 import React from "react";
-import { Container, CssBaseline, Box, Typography } from "@mui/material";
-import "./HomePage.css";
+import { useTranslation } from "react-i18next";
 
-function HomePage(): JSX.Element {
+const HomePage: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
   return (
-    <Container component="main" maxWidth="md">
-      <CssBaseline />
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Quora-like App
-        </Typography>
-      </Box>
-    </Container>
+    <div>
+      <h1>{t("Welcome to React")}</h1>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => changeLanguage("en")}
+      >
+        English
+      </Button>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => changeLanguage("de")}
+      >
+        German
+      </Button>
+    </div>
   );
-}
+};
 
 export default HomePage;

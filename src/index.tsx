@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import client from "./lib/apollo"; // Assuming you have a separate Apollo Client setup file
 import { AppProvider } from "./context/AppContext"; // Import your custom provider
 import Routes from "./routers/routes";
+import "./lib/i18n";
 
 // Get the root element from the document
 const rootElement = document.getElementById("root");
