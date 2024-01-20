@@ -1,4 +1,4 @@
-import * as Types from '../../generated/types';
+import * as Types from '../../graphql/types';
 
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
