@@ -1,9 +1,10 @@
 {
+  "displayName": "e2e",
+  "testEnvironment": "node",
   "collectCoverageFrom": [
     "src/**/*.{js,jsx,ts,tsx}",
     "!**/*.d.ts"
   ],
-  "testEnvironment": "jsdom",
   "testMatch": [
     "<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)",
     "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
