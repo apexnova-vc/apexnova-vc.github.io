@@ -4,7 +4,6 @@
     "stylelint.vscode-stylelint", // Stylelint
     "redhat.vscode-yaml", // YAML
     "christian-kohler.npm-intellisense", // NPM Intellisense
-    "ms-edgedevtools.vscode-edge-devtools", // Edge Developer Tools
     "bradlc.vscode-tailwindcss", // Tailwind CSS Intellisense
     "orta.vscode-jest"
   ],
