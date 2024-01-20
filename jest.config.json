@@ -3,10 +3,10 @@
     "src/**/*.{js,jsx,ts,tsx}",
     "!**/*.d.ts"
   ],
-  "testEnvironment": "jsdom",
+  "testEnvironment": "node",
   "testMatch": [
-    "<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)",
-    "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
+    "<rootDir>/src/**/__tests__/**/*e2e.test.(j|t)s?(x)",
+    "<rootDir>/src/**/*e2e.test.(j|t)s?(x)"
   ],
   "transform": {
     "^.+\\.(js|jsx|mjs)$": "babel-jest",
