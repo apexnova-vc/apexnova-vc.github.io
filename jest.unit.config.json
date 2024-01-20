@@ -1,0 +1,44 @@
+{
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx,ts,tsx}",
+    "!**/*.d.ts"
+  ],
+  "testEnvironment": "jsdom",
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)",
+    "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
+  ],
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    ".*\\.e2e\\..*"
+  ],
+  "transform": {
+    "^.+\\.(js|jsx|mjs)$": "babel-jest",
+    "^.+\\.tsx?$": "babel-jest",
+    "^.+\\.css$": "babel-jest",
+    "^(?!.*\\.(js|jsx|mjs|css|json)$)": "babel-jest"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
+  ],
+  "testEnvironmentOptions": {
+    "url": "http://localhost"
+  },
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web"
+  },
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node",
+    "mjs"
+  ],
+  "globals": {
+    "ts-jest": {
+      "tsConfigFile": "<rootDir>/tsconfig.json"
+    }
+  }
+}
