@@ -1,6 +1,16 @@
 import { Button } from "@mui/material";
+import gql from "graphql-tag";
 import React from "react";
 import { useTranslation } from "react-i18next";
+
+export const GET_BOOKS = gql`
+  query GetBooks {
+    books {
+      title
+      author
+    }
+  }
+`;
 
 const HomePage: React.FC = () => {
   const { t, i18n } = useTranslation();
