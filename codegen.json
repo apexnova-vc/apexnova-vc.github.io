@@ -1,0 +1,18 @@
+{
+  "overwrite": true,
+  "schema": "schema.graphql",
+  "documents": "src/**/*.{tsx,ts,jsx,js}",
+  "generates": {
+    "src/graphql/": {
+      "preset": "near-operation-file",
+      "presetConfig": {
+        "extension": ".generated.type.ts",
+        "baseTypesPath": "types.ts"
+      },
+      "plugins": [
+        "typescript",
+        "typescript-operations"
+      ]
+    }
+  }
+}
