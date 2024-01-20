@@ -1,6 +1,11 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
 
+import {
+  GetAuthorsQuery,
+  GetAuthorsQueryVariables,
+} from "./AboutPage.generated.type";
+
 // Define your GraphQL query
 const GET_AUTHORS = gql`
   query GetAuthors {
@@ -13,7 +18,10 @@ const GET_AUTHORS = gql`
 
 function About() {
   // Use the useQuery hook to fetch data
-  const { loading, error, data } = useQuery(GET_AUTHORS);
+  const { loading, error, data } = useQuery<
+    GetAuthorsQuery,
+    GetAuthorsQueryVariables
+  >(GET_AUTHORS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -25,7 +33,7 @@ function About() {
       <div>
         <h3>Authors:</h3>
         <ul>
-          {data.authors.map((author) => (
+          {data?.authors.map((author) => (
             <li key={author.id}>{author.name}</li>
           ))}
         </ul>
