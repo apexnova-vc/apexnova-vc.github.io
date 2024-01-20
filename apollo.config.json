@@ -1,0 +1,14 @@
+{
+  "client": {
+    "service": {
+      "name": "sample-service"
+    },
+    "includes": [
+      "src/**/*.tsx",
+      "src/**/*.ts",
+      "src/**/*.jsx",
+      "src/**/*.js"
+    ],
+    "tagName": "gql"
+  }
+}
