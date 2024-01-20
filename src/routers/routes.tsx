@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AboutPage from "../screens/AboutPage";
-import HomePage from "../screens/HomePage";
+
+import AboutPage from "../screens/AboutPage/AboutPage";
+import HomePage from "../screens/HomePage/HomePage";
 
 function AppRoutes() {
   return (
