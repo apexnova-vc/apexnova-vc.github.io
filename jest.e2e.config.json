@@ -6,12 +6,10 @@
     "!**/*.d.ts"
   ],
   "testMatch": [
-    "<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)",
-    "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
+    "<rootDir>/src/**/*e2e.test.(j|t)s?(x)"
   ],
   "testPathIgnorePatterns": [
-    "/node_modules/",
-    ".*\\.e2e\\..*"
+    "/node_modules/"
   ],
   "transform": {
     "^.+\\.(js|jsx|mjs)$": "babel-jest",

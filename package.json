@@ -58,9 +58,9 @@
   "scripts": {
     "dev": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --config=jest.config.json",
+    "test": "jest --config=jest.e2e.config.json",
     "test:unit": "jest --config=jest.unit.config.json",
-    "test:e2e": "jest --config=jest.config.json",
+    "test:e2e": "jest --config=jest.e2e.config.json",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "eject": "react-scripts eject",

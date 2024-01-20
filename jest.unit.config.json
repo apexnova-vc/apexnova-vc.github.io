@@ -1,4 +1,6 @@
 {
+  "displayName": "unit",
+  "testEnvironment": "jsdom",
   "collectCoverageFrom": [
     "src/**/*.{js,jsx,ts,tsx}",
     "!**/*.d.ts"
@@ -6,6 +8,10 @@
   "testMatch": [
     "<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)",
     "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
+  ],
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    ".*\\.e2e\\..*"
   ],
   "transform": {
     "^.+\\.(js|jsx|mjs)$": "babel-jest",

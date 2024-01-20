@@ -1,11 +1,11 @@
-name: Stylelint Check
+name: Code Generation Check
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
-  stylelint:
+  codegen:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,10 +14,10 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '21'
 
     - name: Install Dependencies
       run: npm ci
 
-    - name: Run Stylelint
-      run: npm run stylelint
+    - name: Run Code Generation
+      run: npm run schema
