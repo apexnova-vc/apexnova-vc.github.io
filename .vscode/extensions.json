@@ -5,7 +5,8 @@
     "redhat.vscode-yaml", // YAML
     "christian-kohler.npm-intellisense", // NPM Intellisense
     "bradlc.vscode-tailwindcss", // Tailwind CSS Intellisense
-    "orta.vscode-jest"
+    "orta.vscode-jest",
+    "github.vscode-github-actions"
   ],
   "unwantedRecommendations": [
     "aaron-bond.better-comments", // Better Comments
