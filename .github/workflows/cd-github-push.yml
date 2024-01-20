@@ -1,14 +1,13 @@
-name: Build and Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Set a branch to deploy
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -16,18 +15,14 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '14'  # Set this to the node version you are using
 
     - name: Install Dependencies
-      run: npm ci
+      run: npm install
 
-    - name: Build
-      run: npm run build
-
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@4.1.5
-      with:
-        branch: gh-pages
-        folder: build
-        clean: true
-        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build and Deploy
+      run: npm run deploy
+      env:
+        CI: false
+        # Personal Access Token (secrets.GH_TOKEN) should be set in the repo's secrets
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

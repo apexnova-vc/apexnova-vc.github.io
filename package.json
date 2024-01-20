@@ -1,7 +1,7 @@
 {
   "name": "sample_web",
   "version": "0.1.0",
-  "homepage": "https://apexnova-vc.github.io/",
+  "homepage": "https://apexnova-vc.github.io",
   "type": "module",
   "license": "MIT",
   "private": true,
