@@ -1,21 +1,18 @@
 import { ApolloProvider } from "@apollo/client";
 import React from "react";
-import "./lib/i18n";
 import { createRoot } from "react-dom/client";
 
-import { AppProvider } from "./context/AppContext"; // Import your custom provider
-import client from "./lib/apollo"; // Assuming you have a separate Apollo Client setup file
+import "./index.css"; // Ensure this imports the CSS file where you added Tailwind directives
+import "./lib/i18n";
+import { AppProvider } from "./context/AppContext";
+import client from "./lib/apollo";
 import reportWebVitals from "./reportWebVitals";
 import Routes from "./routers/routes";
 
-// Get the root element from the document
 const rootElement = document.getElementById("root");
-
-// Check if rootElement is not null before calling createRoot
 if (rootElement !== null) {
   const root = createRoot(rootElement);
 
-  // Use the new createRoot API to render the app
   root.render(
     <React.StrictMode>
       <ApolloProvider client={client}>
@@ -27,5 +24,4 @@ if (rootElement !== null) {
   );
 }
 
-// Call the reportWebVitals function, which logs performance-related metrics
 reportWebVitals();

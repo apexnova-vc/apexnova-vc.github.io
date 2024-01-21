@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import gql from "graphql-tag";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -23,22 +22,20 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>{t("Welcome to React")}</h1>
-      <Button
-        variant="contained"
-        color="primary"
+    <div className="p-4">
+      <h1 className="text-xl font-bold mb-4">{t("Welcome to React")}</h1>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
         onClick={() => changeLanguage("en")}
       >
         English
-      </Button>
-      <Button
-        variant="contained"
-        color="secondary"
+      </button>
+      <button
+        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
         onClick={() => changeLanguage("de")}
       >
         German
-      </Button>
+      </button>
     </div>
   );
 };

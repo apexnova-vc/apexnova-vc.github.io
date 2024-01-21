@@ -2,10 +2,12 @@
   /*
       非特殊情况请勿修改此文件, 鼠标放在具体语句上会有vscode自带的解释
   */
+  "css.validate": false, // Disable default CSS built-in lint
+  "scss.validate": false, // Disable SCSS lint (optional if using scss)
   "eslint.options": {
-    "overrideConfigFile": ".eslintrc.json"
+    "overrideConfigFile": ".eslintrc"
   },
-  "stylelint.configFile": ".stylelintrc.json",
+  "stylelint.configFile": ".stylelintrc",
   "stylelint.validate": [
     "css",
     "sass",
