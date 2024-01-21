@@ -1,17 +1,70 @@
 {
+  "version": "0.2.0",
   "configurations": [
     {
-      "command": "npm run dev",
-      "name": "Run npm start",
+      "name": "Run npm: dev",
       "request": "launch",
-      "type": "node-terminal"
+      "type": "node-terminal",
+      "command": "npm run dev"
     },
     {
-      "name": "Launch Edge",
+      "name": "Run npm: test",
       "request": "launch",
-      "type": "msedge",
+      "type": "node-terminal",
+      "command": "npm run test"
+    },
+    {
+      "name": "Run npm: test:unit",
+      "request": "launch",
+      "type": "node-terminal",
+      "command": "npm run test:unit"
+    },
+    {
+      "name": "Run npm: test:e2e",
+      "request": "launch",
+      "type": "node-terminal",
+      "command": "npm run test:e2e"
+    },
+    {
+      "name": "Run npm: test:watch",
+      "request": "launch",
+      "type": "node-terminal",
+      "command": "npm run test:watch"
+    },
+    {
+      "name": "Run npm: test:coverage",
+      "request": "launch",
+      "type": "node-terminal",
+      "command": "npm run test:coverage"
+    },
+    {
+      "name": "Run npm: schema",
+      "request": "launch",
+      "type": "node-terminal",
+      "command": "npm run schema"
+    },
+    {
+      "name": "Run npm: lint",
+      "request": "launch",
+      "type": "node-terminal",
+      "command": "npm run lint"
+    },
+    {
+      "name": "Run npm: stylelint",
+      "request": "launch",
+      "type": "node-terminal",
+      "command": "npm run stylelint"
+    },
+    {
+      "name": "Launch Browser",
+      "request": "launch",
+      "type": "msedge", // or "chrome" if you use Chrome
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      }
     }
   ]
 }
