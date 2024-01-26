@@ -1,15 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.ff8b5c9b.css",
-    "main.js": "/static/js/main.9fcd9059.js",
-    "static/js/787.57d8e624.chunk.js": "/static/js/787.57d8e624.chunk.js",
-    "index.html": "/index.html",
-    "main.ff8b5c9b.css.map": "/static/css/main.ff8b5c9b.css.map",
-    "main.9fcd9059.js.map": "/static/js/main.9fcd9059.js.map",
-    "787.57d8e624.chunk.js.map": "/static/js/787.57d8e624.chunk.js.map"
+    "main.css": "/kenya/static/css/main.30f47faf.css",
+    "main.js": "/kenya/static/js/main.e02fb216.js",
+    "static/js/787.57d8e624.chunk.js": "/kenya/static/js/787.57d8e624.chunk.js",
+    "static/media/stem-essay.gif": "/kenya/static/media/stem-essay.75c517911a258153dc90.gif",
+    "static/media/gpt.svg": "/kenya/static/media/gpt.bf0f07e1de8cb80b417895ae6c91af08.svg",
+    "static/media/harvard.png": "/kenya/static/media/harvard.622d283e3a38831ec31f.png",
+    "static/media/ib.png": "/kenya/static/media/ib.1f35909e5d0c575669ca.png",
+    "static/media/gunnar.svg": "/kenya/static/media/gunnar.7c5f634b6741659c98c6f014f0b3496d.svg",
+    "static/media/ap.png": "/kenya/static/media/ap.38973b6b66835da1c5ef.png",
+    "static/media/ai-science.svg": "/kenya/static/media/ai-science.24efa06ee0371ebc5b375b1df58a7a15.svg",
+    "static/media/prize.svg": "/kenya/static/media/prize.3d1852c56aec7a78d05866f8a6f93a02.svg",
+    "static/media/user.svg": "/kenya/static/media/user.b2883da03e8affc732472161027699ea.svg",
+    "static/media/mark_s.svg": "/kenya/static/media/mark_s.f8624a2306694e02a47283ee227c46ee.svg",
+    "static/media/mark.svg": "/kenya/static/media/mark.fc0d280d243c6d7bdeaa7357039d541a.svg",
+    "static/media/frame.svg": "/kenya/static/media/frame.cd690f9131d1d643cb7a6ad07e2ea88f.svg",
+    "index.html": "/kenya/index.html",
+    "static/media/stem.svg": "/kenya/static/media/stem.e13e5b4ec6cb7e22a076edd608703ad8.svg",
+    "main.30f47faf.css.map": "/kenya/static/css/main.30f47faf.css.map",
+    "main.e02fb216.js.map": "/kenya/static/js/main.e02fb216.js.map",
+    "787.57d8e624.chunk.js.map": "/kenya/static/js/787.57d8e624.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ff8b5c9b.css",
-    "static/js/main.9fcd9059.js"
+    "static/css/main.30f47faf.css",
+    "static/js/main.e02fb216.js"
   ]
 }
