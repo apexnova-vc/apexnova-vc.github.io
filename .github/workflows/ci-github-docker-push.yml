@@ -28,7 +28,7 @@ jobs:
         context: .
         push: true
         tags:
-          apexnova-vc/sample_web:latest
+          ghcr.io/apexnova-vc/sample_web:latest
         # Uncomment and modify if needed
         # build-args: |
         #   ARG_NAME=arg_value
