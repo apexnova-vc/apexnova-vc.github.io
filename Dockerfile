@@ -17,7 +17,7 @@ COPY . .
 EXPOSE 3000
 
 # Add metadata to the image to describe which repo this image belongs to
-LABEL org.opencontainers.image.source=https://github.com/apexnova-vc/simple_web
+LABEL org.opencontainers.image.source = "https://github.com/apexnova-vc/sample_web"
 
 # Define the command to run the app, change this to your production start command
 CMD [ "npm", "run", "start" ]
