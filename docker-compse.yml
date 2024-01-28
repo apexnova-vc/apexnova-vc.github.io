@@ -1,0 +1,11 @@
+version: "3"
+services:
+  web:
+    build: .
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
