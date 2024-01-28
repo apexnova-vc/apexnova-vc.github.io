@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [linux/amd64, linux/arm64]
 
     steps:
     - name: Checkout code
@@ -22,16 +25,20 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GH_TOKEN }}
 
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
-        tags:
+        tags: |
           ghcr.io/apexnova-vc/sample_web:latest
-        # Uncomment and modify if needed
-        # build-args: |
-        #   ARG_NAME=arg_value
-        # platforms: linux/amd64,linux/arm64
-        # cache-from: type=registry,ref=apexnova-vc/sample_web:cache
-        # cache-to: type=inline
+          ghcr.io/apexnova-vc/sample_web:${{ github.sha }}
+          ghcr.io/apexnova-vc/sample_web:${{ steps.extract_branch.outputs.branch }}-${{ github.sha }}
+        platforms: ${{ matrix.platform }}
+        cache-from: type=registry,ref=ghcr.io/apexnova-vc/sample_web:cache
+        cache-to: type=inline
