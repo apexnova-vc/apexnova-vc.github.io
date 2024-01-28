@@ -16,5 +16,8 @@ COPY . .
 # Make port 3000 available to the world outside this container
 EXPOSE 3000
 
-# Define the command to run the app
-CMD [ "npm", "run", "dev" ]
+# Add metadata to the image to describe which repo this image belongs to
+LABEL org.opencontainers.image.source=https://github.com/apexnova-vc/simple_web
+
+# Define the command to run the app, change this to your production start command
+CMD [ "npm", "run", "start" ]

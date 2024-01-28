@@ -27,4 +27,12 @@ jobs:
       with:
         context: .
         push: true
-        tags: apexnova-vc/sample_web:latest
+        tags: |
+          apexnova-vc/sample_web:latest
+          apexnova-vc/sample_web:${{ github.sha }}
+        # Uncomment and modify if needed
+        # build-args: |
+        #   ARG_NAME=arg_value
+        # platforms: linux/amd64,linux/arm64
+        # cache-from: type=registry,ref=apexnova-vc/sample_web:cache
+        # cache-to: type=inline
