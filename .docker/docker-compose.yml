@@ -1,0 +1,12 @@
+version: "3"
+services:
+  web:
+    image: ghcr.io/apexnova-vc/sample_web:latest # Use the image from GitHub Container Registry
+    build: . # Build the image using the Dockerfile in the current directory
+    working_dir: /app # Set the working directory in the container
+    ports:
+      - "3000:3000" # Map port 3000 of the container to port 3000 on the host
+    volumes:
+      - .:/app # Mount the current directory into the /app directory in the container
+    environment:
+      - NODE_ENV=development # Set the environment variable for development mode
