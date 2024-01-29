@@ -8,6 +8,12 @@
       "command": "npm run dev"
     },
     {
+      "name": "Run npm: build",
+      "request": "launch",
+      "type": "node-terminal",
+      "command": "npm run build"
+    },
+    {
       "name": "Run npm: test",
       "request": "launch",
       "type": "node-terminal",

@@ -1,8 +1,4 @@
-// Do this as the first thing so that any code reading it knows the right env.
 import "./dev.js";
-// throw new Error("wow====", process.env);
-// // console.log("===env==========", process.env);
-
 process.on("unhandledRejection", (err) => {
   throw err;
 });
@@ -11,8 +7,7 @@ process.on("unhandledRejection", (err) => {
 import "../config/env.cjs";
 
 import fs from "fs";
-import path from "path";
-import { dirname } from "path";
+import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
 import react from "react"; // care
