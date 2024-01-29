@@ -1,15 +1,14 @@
-import "../config/util/tests";
+import "../config/util/setTestEnv";
 
 process.on("unhandledRejection", (err) => {
   throw err;
 });
 
-import "../config/env.cjs";
+import "../config/env";
 
-// Ensure environment variables are read.
 import { execSync } from "child_process";
 
-import { jest } from "jest";
+import jest from "jest";
 
 const argv = process.argv.slice(2);
 
