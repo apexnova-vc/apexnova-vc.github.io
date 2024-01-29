@@ -7,8 +7,8 @@ const ignoredFiles = require("react-dev-utils/ignoredFiles");
 const noopServiceWorkerMiddleware = require("react-dev-utils/noopServiceWorkerMiddleware");
 const redirectServedPath = require("react-dev-utils/redirectServedPathMiddleware");
 
-const getHttpsConfig = require("./getHttpsConfig.cjs");
-const paths = require("./paths.cjs");
+const getHttpsConfig = require("./getHttpsConfig");
+const paths = require("./paths").default;
 
 const host = process.env.HOST || "0.0.0.0";
 const sockHost = process.env.WDS_SOCKET_HOST;

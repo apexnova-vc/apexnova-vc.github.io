@@ -21,16 +21,19 @@ const webpack = require("webpack");
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 
-const getClientEnvironment = require("./env.cjs");
-const modules = require("./modules.cjs");
-const paths = require("./paths.cjs");
+const getClientEnvironment = require("./env.ts").default;
+const modules = require("./modules.ts");
+const paths = require("./paths").default;
+const moduleFileExtensions = require("./paths").moduleFileExtensions;
+
+// console.log("======wuuuut======paths", paths);
 
 const ForkTsCheckerWebpackPlugin =
   process.env.TSC_COMPILE_ON_ERROR === "true"
     ? require("react-dev-utils/ForkTsCheckerWarningWebpackPlugin")
     : require("react-dev-utils/ForkTsCheckerWebpackPlugin");
 
-const createEnvironmentHash = require("./webpack/persistentCache/createEnvironmentHash.cjs");
+const createEnvironmentHash = require("./webpack/persistentCache/createEnvironmentHash.ts");
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
@@ -63,9 +66,7 @@ const imageInlineSizeLimit = parseInt(
 const useTypeScript = fs.existsSync(paths.appTsConfig);
 
 // Check if Tailwind config exists
-const useTailwind = fs.existsSync(
-  path.join(paths.appPath, "tailwind.config.js"),
-);
+const useTailwind = true; // default use tailwind
 
 // Get the path to the uncompiled service worker (if it exists).
 const swSrc = paths.swSrc;
@@ -104,7 +105,9 @@ module.exports = function (webpackEnv) {
   // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
   // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
   // Get environment variables to inject into our app.
+  console.log("=====2.9=====", paths);
   const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
+  console.log("=====2.95=====");
 
   const shouldUseReactRefresh = env.raw.FAST_REFRESH;
 
@@ -311,7 +314,7 @@ module.exports = function (webpackEnv) {
       // https://github.com/facebook/create-react-app/issues/290
       // `web` extension prefixes have been added for better support
       // for React Native Web.
-      extensions: paths.moduleFileExtensions
+      extensions: moduleFileExtensions
         .map((ext) => `.${ext}`)
         .filter((ext) => useTypeScript || !ext.includes("ts")),
       alias: {

@@ -8,7 +8,7 @@ process.on("unhandledRejection", (err) => {
 });
 
 // Ensure environment variables are read.
-import "../config/env.cjs";
+import "../config/env.js";
 
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
@@ -24,7 +24,7 @@ import printBuildError from "react-dev-utils/printBuildError.js";
 import printHostingInstructions from "react-dev-utils/printHostingInstructions.js";
 import webpack from "webpack";
 
-import paths from "../config/paths.cjs";
+import paths from "../config/paths.ts";
 import configFactory from "../config/webpack.config.cjs";
 
 const __filename = fileURLToPath(import.meta.url);

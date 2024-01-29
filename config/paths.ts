@@ -1,15 +1,13 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-"use strict";
+import fs from "fs";
+import path from "path";
 
-const fs = require("fs");
-const path = require("path");
-
-const getPublicUrlOrPath = require("react-dev-utils/getPublicUrlOrPath");
+import getPublicUrlOrPath from "react-dev-utils/getPublicUrlOrPath";
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebook/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
+const resolveApp = (relativePath: string) =>
+  path.resolve(appDirectory, relativePath);
 
 // We use `PUBLIC_URL` environment variable or "homepage" field to infer
 // "public path" at which the app is served.
@@ -19,13 +17,15 @@ const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 // like /todos/42/static/js/bundle.7289d.js. We have to know the root.
 const publicUrlOrPath = getPublicUrlOrPath(
   process.env.NODE_ENV === "development",
-  require(resolveApp("package.json")).homepage,
+  undefined, // use jsonData.homepage
   process.env.PUBLIC_URL,
 );
 
+console.log("===publicUrlOrPath===", publicUrlOrPath);
+
 const buildPath = process.env.BUILD_PATH || "build";
 
-const moduleFileExtensions = [
+export const moduleFileExtensions = [
   "web.mjs",
   "mjs",
   "web.js",
@@ -40,7 +40,10 @@ const moduleFileExtensions = [
 ];
 
 // Resolve file paths in the same order as webpack
-const resolveModule = (resolveFn, filePath) => {
+const resolveModule = (
+  resolveFn: (relativePath: string) => string,
+  filePath: string,
+) => {
   const extension = moduleFileExtensions.find((extension) =>
     fs.existsSync(resolveFn(`${filePath}.${extension}`)),
   );
@@ -53,7 +56,7 @@ const resolveModule = (resolveFn, filePath) => {
 };
 
 // config after eject: we're in ./config/
-module.exports = {
+export default {
   dotenv: resolveApp(".env"),
   appPath: resolveApp("."),
   appBuild: resolveApp(buildPath),
@@ -73,5 +76,3 @@ module.exports = {
   swSrc: resolveModule(resolveApp, "src/service-worker"),
   publicUrlOrPath,
 };
-
-module.exports.moduleFileExtensions = moduleFileExtensions;

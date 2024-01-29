@@ -7,7 +7,7 @@ const path = require("path");
 
 const chalk = require("react-dev-utils/chalk");
 
-const paths = require("./paths.cjs");
+const paths = require("./paths.ts");
 
 // Ensure the certificate and key provided are valid and if not
 // throw an easy to debug error
