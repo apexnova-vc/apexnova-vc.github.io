@@ -1,13 +1,13 @@
 import fs from "fs";
 
 import { Application } from "express"; // Importing the type for Express application
-import evalSourceMapMiddleware from "react-dev-utils/evalSourceMapMiddleware";
-import ignoredFiles from "react-dev-utils/ignoredFiles";
-import noopServiceWorkerMiddleware from "react-dev-utils/noopServiceWorkerMiddleware";
-import redirectServedPath from "react-dev-utils/redirectServedPathMiddleware";
 
 import paths from "./paths";
+import evalSourceMapMiddleware from "./util/evalSourceMapMiddleware";
 import getHttpsConfig from "./util/getHttpsConfig";
+import ignoredFiles from "./util/ignoredFiles";
+import noopServiceWorkerMiddleware from "./util/noopServiceWorkerMiddleware";
+import redirectServedPath from "./util/redirectServedPathMiddleware";
 
 // Define interface for the proxy and allowedHost
 interface ProxyConfig {
