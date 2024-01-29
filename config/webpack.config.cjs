@@ -367,9 +367,6 @@ module.exports = function (webpackEnv) {
         new ReactRefreshWebpackPlugin({
           overlay: false,
         }),
-      // Watcher doesn't work well if you mistype casing in a path so we use
-      // a plugin that prints an error when you attempt to do this.
-      // See https://github.com/facebook/create-react-app/issues/240
       isEnvDevelopment && new CaseSensitivePathsPlugin(),
       isEnvProduction &&
         new MiniCssExtractPlugin({
@@ -482,8 +479,6 @@ module.exports = function (webpackEnv) {
         },
       }),
     ].filter(Boolean),
-    // Turn off performance processing because we utilize
-    // our own hints via the FileSizeReporter
     performance: false,
   };
 };

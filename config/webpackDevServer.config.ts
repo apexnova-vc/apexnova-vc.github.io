@@ -1,5 +1,6 @@
 import fs from "fs";
 
+import { Application } from "express"; // Importing the type for Express application
 import evalSourceMapMiddleware from "react-dev-utils/evalSourceMapMiddleware";
 import ignoredFiles from "react-dev-utils/ignoredFiles";
 import noopServiceWorkerMiddleware from "react-dev-utils/noopServiceWorkerMiddleware";
@@ -8,13 +9,19 @@ import redirectServedPath from "react-dev-utils/redirectServedPathMiddleware";
 import paths from "./paths";
 import getHttpsConfig from "./util/getHttpsConfig";
 
-const host = process.env.HOST || "0.0.0.0";
-const sockHost = process.env.WDS_SOCKET_HOST;
-const sockPath = process.env.WDS_SOCKET_PATH; // default: '/ws'
-const sockPort = process.env.WDS_SOCKET_PORT;
+// Define interface for the proxy and allowedHost
+interface ProxyConfig {
+  [key: string]: string; // TODO
+}
 
-export default function (proxy, allowedHost) {
-  const disableFirewall =
+// Define types for the environment variables
+const host: string = process.env.HOST || "0.0.0.0";
+const sockHost: string | undefined = process.env.WDS_SOCKET_HOST;
+const sockPath: string | undefined = process.env.WDS_SOCKET_PATH; // default: '/ws'
+const sockPort: string | undefined = process.env.WDS_SOCKET_PORT;
+
+export default function (proxy: ProxyConfig, allowedHost: string) {
+  const disableFirewall: boolean =
     !proxy || process.env.DANGEROUSLY_DISABLE_HOST_CHECK === "true";
 
   return {
@@ -53,16 +60,18 @@ export default function (proxy, allowedHost) {
       index: paths.publicUrlOrPath,
     },
     proxy,
-    onBeforeSetupMiddleware(devServer) {
+    onBeforeSetupMiddleware(devServer: { app: Application }) {
       devServer.app.use(evalSourceMapMiddleware(devServer));
 
       if (fs.existsSync(paths.proxySetup)) {
         import(paths.proxySetup).then((proxySetup) => {
-          proxySetup.default(devServer.app);
+          if (proxySetup.default) {
+            proxySetup.default(devServer.app);
+          }
         });
       }
     },
-    onAfterSetupMiddleware(devServer) {
+    onAfterSetupMiddleware(devServer: { app: Application }) {
       devServer.app.use(redirectServedPath(paths.publicUrlOrPath));
       devServer.app.use(noopServiceWorkerMiddleware(paths.publicUrlOrPath));
     },
