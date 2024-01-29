@@ -1,4 +1,4 @@
-import "../config/dev.js";
+import "../config/util/dev.ts";
 process.on("unhandledRejection", (err) => {
   throw err;
 });
@@ -10,7 +10,6 @@ import fs from "fs";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
-import { ConsoleMessage } from "puppeteer";
 import react from "react"; // care
 import { checkBrowsers } from "react-dev-utils/browsersHelper.js";
 import chalk from "react-dev-utils/chalk.js";

@@ -12,10 +12,10 @@
     "/node_modules/"
   ],
   "transform": {
-    "^.+\\.(js|jsx|mjs)$": "babel-jest",
-    "^.+\\.tsx?$": "babel-jest",
-    "^.+\\.css$": "babel-jest",
-    "^(?!.*\\.(js|jsx|mjs|css|json)$)": "babel-jest"
+    "^.+\\.(js|jsx|mjs)$": "ts-jest",
+    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.css$": "ts-jest",
+    "^(?!.*\\.(js|jsx|mjs|css|json)$)": "ts-jest"
   },
   "transformIgnorePatterns": [
     "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"

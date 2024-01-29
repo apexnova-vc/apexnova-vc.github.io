@@ -91,60 +91,6 @@ const scssLoader = {
   use: [styleLoader, rawCssLoader, postcssLoader, rawSassLoader],
 };
 
-// js/ts loaders
-const jsLoader = {
-  test: /\.(js|jsx|mjs|ts|tsx)$/,
-  include: paths.appSrc,
-  loader: require.resolve("babel-loader"),
-  options: {
-    customize: require.resolve("babel-preset-react-app/webpack-overrides"),
-    plugins: [
-      [
-        // require.resolve('babel/plugin-proposal-optional-chaining'),
-        require.resolve("babel-plugin-named-asset-import"),
-        {
-          loaderMap: {
-            svg: {
-              ReactComponent: "@svgr/webpack?-svgo,+ref![path]",
-            },
-          },
-        },
-      ],
-      // this one caused the issue
-      ["import", importAntDesignOption],
-      ["@babel/plugin-proposal-optional-chaining", {}],
-      ["@babel/plugin-proposal-nullish-coalescing-operator", {}],
-    ],
-    cacheDirectory: true,
-    cacheCompression: isProd,
-    compact: isProd,
-  },
-};
-
-const genericJSLoader = {
-  test: /\.(js|mjs)$/,
-  exclude: /@babel(?:\/|\\{1,2})runtime/,
-  loader: require.resolve("babel-loader"),
-  options: {
-    babelrc: false,
-    configFile: false,
-    compact: false,
-    presets: [
-      [
-        require.resolve("babel-preset-react-app/dependencies"),
-        { helpers: true },
-      ],
-    ],
-    plugins: [
-      ["@babel/plugin-proposal-optional-chaining", {}],
-      ["@babel/plugin-proposal-nullish-coalescing-operator", {}],
-    ],
-    cacheDirectory: true,
-    cacheCompression: isProd,
-    sourceMaps: false,
-  },
-};
-
 // graphql loader
 const graphqlLoader = {
   test: /\.(graphql|gql)$/,
@@ -178,8 +124,6 @@ export default {
   cssLoader,
   lessLoader,
   scssLoader,
-  jsLoader,
-  genericJSLoader,
   graphqlLoader,
   urlLoader,
   fileLoader,
