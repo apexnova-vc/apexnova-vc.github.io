@@ -1,41 +1,43 @@
-"use strict";
-
 // Do this as the first thing so that any code reading it knows the right env.
-process.env.BABEL_ENV = "development";
-process.env.NODE_ENV = "development";
+import "./dev.js";
+// throw new Error("wow====", process.env);
+// // console.log("===env==========", process.env);
 
-// Makes the script crash on unhandled rejections instead of silently
-// ignoring them. In the future, promise rejections that are not handled will
-// terminate the Node.js process with a non-zero exit code.
 process.on("unhandledRejection", (err) => {
   throw err;
 });
 
 // Ensure environment variables are read.
-require("../config/env.cjs");
+import "../config/env.cjs";
 
-const fs = require("fs");
+import fs from "fs";
+import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
-const { checkBrowsers } = require("react-dev-utils/browsersHelper");
-const chalk = require("react-dev-utils/chalk");
-const checkRequiredFiles = require("react-dev-utils/checkRequiredFiles");
-const clearConsole = require("react-dev-utils/clearConsole");
-const openBrowser = require("react-dev-utils/openBrowser");
-const {
+import react from "react"; // care
+import { checkBrowsers } from "react-dev-utils/browsersHelper.js";
+import chalk from "react-dev-utils/chalk.js";
+import checkRequiredFiles from "react-dev-utils/checkRequiredFiles.js";
+import clearConsole from "react-dev-utils/clearConsole.js";
+import openBrowser from "react-dev-utils/openBrowser.js";
+import {
   choosePort,
   createCompiler,
   prepareProxy,
   prepareUrls,
-} = require("react-dev-utils/WebpackDevServerUtils");
-const semver = require("semver");
-const webpack = require("webpack");
-const WebpackDevServer = require("webpack-dev-server");
+} from "react-dev-utils/WebpackDevServerUtils.js";
+import semver from "semver";
+import webpack from "webpack";
+import WebpackDevServer from "webpack-dev-server";
 
-const getClientEnvironment = require("../config/env.cjs");
-const paths = require("../config/paths.cjs");
-const configFactory = require("../config/webpack.config.cjs");
-const createDevServerConfig = require("../config/webpackDevServer.config.cjs");
-const react = require(require.resolve("react", { paths: [paths.appPath] }));
+import getClientEnvironment from "../config/env.cjs";
+import paths from "../config/paths.cjs";
+import configFactory from "../config/webpack.config.cjs";
+import createDevServerConfig from "../config/webpackDevServer.config.cjs";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
 const useYarn = fs.existsSync(paths.yarnLockFile);
@@ -83,7 +85,10 @@ checkBrowsers(paths.appPath, isInteractive)
 
     const config = configFactory("development");
     const protocol = process.env.HTTPS === "true" ? "https" : "http";
-    const appName = require(paths.appPackageJson).name;
+    const jsonData = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, paths.appPackageJson), "utf-8"),
+    );
+    const appName = jsonData.name;
 
     const useTypeScript = fs.existsSync(paths.appTsConfig);
     const urls = prepareUrls(
@@ -102,7 +107,8 @@ checkBrowsers(paths.appPath, isInteractive)
       webpack,
     });
     // Load proxy config
-    const proxySetting = require(paths.appPackageJson).proxy;
+
+    const proxySetting = jsonData.proxy;
     const proxyConfig = prepareProxy(
       proxySetting,
       paths.appPublic,

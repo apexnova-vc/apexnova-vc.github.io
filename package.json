@@ -111,7 +111,7 @@
     "web-vitals": "^3.5.2"
   },
   "scripts": {
-    "dev": "node scripts/start.cjs",
+    "dev": "node scripts/start.js",
     "build": "node scripts/build.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -r https://${GH_TOKEN}@github.com/apexnova-vc/apexnova-vc.github.io",
