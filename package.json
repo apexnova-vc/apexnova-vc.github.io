@@ -113,7 +113,7 @@
   },
   "scripts": {
     "dev": "npx tsx scripts/start.ts",
-    "build": "node scripts/build.js",
+    "build": "npx tsx scripts/build.ts",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -r https://${GH_TOKEN}@github.com/apexnova-vc/apexnova-vc.github.io",
     "test": "jest --config=jest.e2e.config.json",
