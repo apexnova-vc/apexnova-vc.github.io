@@ -10,9 +10,9 @@ import fs from "fs";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
+import chalk from "chalk";
 import react from "react"; // care
 import { checkBrowsers } from "react-dev-utils/browsersHelper.js";
-import chalk from "react-dev-utils/chalk.js";
 import checkRequiredFiles from "react-dev-utils/checkRequiredFiles.js";
 import clearConsole from "react-dev-utils/clearConsole.js";
 import openBrowser from "react-dev-utils/openBrowser.js";

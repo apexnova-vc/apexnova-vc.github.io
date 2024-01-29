@@ -6,8 +6,22 @@ import dotenvExpand from "dotenv-expand";
 
 import paths from "./paths";
 
-// Make sure that including paths.ts after env.js will read .env variables.
-// delete require.cache[require.resolve("./paths.ts")];
+export interface Env {
+  NODE_ENV: string;
+  PUBLIC_URL: string;
+  WDS_SOCKET_HOST?: string;
+  WDS_SOCKET_PATH?: string;
+  WDS_SOCKET_PORT?: string;
+  FAST_REFRESH: boolean;
+  [key: string]: string | boolean | undefined;
+}
+
+export interface ClientEnvironment {
+  raw: Env;
+  stringified: {
+    "process.env": { [key: string]: string };
+  };
+}
 
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -43,7 +57,9 @@ process.env.NODE_PATH = (process.env.NODE_PATH || "")
 
 const REACT_APP = /^REACT_APP_/i;
 
-export default function getClientEnvironment(publicUrl: string) {
+export default function getClientEnvironment(
+  publicUrl: string,
+): ClientEnvironment {
   const raw = Object.keys(process.env)
     .filter((key) => REACT_APP.test(key))
     .reduce(
@@ -61,7 +77,7 @@ export default function getClientEnvironment(publicUrl: string) {
       },
     );
   // Stringify all values so we can feed into webpack DefinePlugin
-  const stringified = {
+  const stringified: { "process.env": { [key: string]: string } } = {
     "process.env": Object.keys(raw).reduce((env, key) => {
       env[key] = JSON.stringify(raw[key]);
       return env;

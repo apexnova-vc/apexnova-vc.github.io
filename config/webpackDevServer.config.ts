@@ -5,8 +5,8 @@ import ignoredFiles from "react-dev-utils/ignoredFiles";
 import noopServiceWorkerMiddleware from "react-dev-utils/noopServiceWorkerMiddleware";
 import redirectServedPath from "react-dev-utils/redirectServedPathMiddleware";
 
-import getHttpsConfig from "./getHttpsConfig";
 import paths from "./paths";
+import getHttpsConfig from "./util/getHttpsConfig";
 
 const host = process.env.HOST || "0.0.0.0";
 const sockHost = process.env.WDS_SOCKET_HOST;

@@ -3,6 +3,4 @@ function setEnvironmentVariables() {
   process.env.PUBLIC_URL = "/";
 }
 
-setEnvironmentVariables();
-
-export { setEnvironmentVariables };
+export default setEnvironmentVariables();

@@ -22,11 +22,11 @@ const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 
 const getClientEnvironment = require("./env.ts").default;
-const { urlLoader } = require("./loaders.ts").default;
 const modules = require("./modules.ts");
 const paths = require("./paths").default;
 const moduleFileExtensions = require("./paths").moduleFileExtensions;
-const createEnvironmentHash = require("./webpack/persistentCache/createEnvironmentHash.ts");
+const createEnvironmentHash =
+  require("./util/createEnvironmentHash.ts").default;
 
 const reactRefreshRuntimeEntry = require.resolve("react-refresh/runtime");
 const reactRefreshWebpackPluginRuntimeEntry = require.resolve(
@@ -267,7 +267,17 @@ module.exports = function (webpackEnv) {
                 },
               },
             },
-            urlLoader,
+            {
+              test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+              type: "asset",
+              parser: {
+                dataUrlCondition: {
+                  maxSize: parseInt(
+                    process.env.IMAGE_INLINE_SIZE_LIMIT || "10000",
+                  ),
+                },
+              },
+            },
             {
               test: /\.svg$/,
               use: [
