@@ -1,20 +1,17 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-"use strict";
+import fs from "fs";
+import path from "path";
 
-const fs = require("fs");
-const path = require("path");
+import chalk from "react-dev-utils/chalk";
+import resolve from "resolve";
 
-const chalk = require("react-dev-utils/chalk");
-const resolve = require("resolve");
-
-const paths = require("./paths.ts");
+import paths from "./paths";
 
 /**
  * Get additional module paths based on the baseUrl of a compilerOptions object.
  *
  * @param {Object} options
  */
-function getAdditionalModulePaths(options = {}) {
+function getAdditionalModulePaths(options: { [key: string]: string } = {}) {
   const baseUrl = options.baseUrl;
 
   if (!baseUrl) {
@@ -57,7 +54,7 @@ function getAdditionalModulePaths(options = {}) {
  *
  * @param {*} options
  */
-function getWebpackAliases(options = {}) {
+function getWebpackAliases(options: { [key: string]: string } = {}) {
   const baseUrl = options.baseUrl;
 
   if (!baseUrl) {
@@ -78,7 +75,7 @@ function getWebpackAliases(options = {}) {
  *
  * @param {*} options
  */
-function getJestAliases(options = {}) {
+function getJestAliases(options: { [key: string]: string } = {}) {
   const baseUrl = options.baseUrl;
 
   if (!baseUrl) {
@@ -136,4 +133,4 @@ function getModules() {
   };
 }
 
-module.exports = getModules();
+export default getModules();

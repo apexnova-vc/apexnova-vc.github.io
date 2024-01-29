@@ -29,7 +29,7 @@ import WebpackDevServer from "webpack-dev-server";
 import getClientEnvironment from "../config/env.ts";
 import paths from "../config/paths.ts";
 import configFactory from "../config/webpack.config.cjs";
-import createDevServerConfig from "../config/webpackDevServer.config.cjs";
+import createDevServerConfig from "../config/webpackDevServer.config.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

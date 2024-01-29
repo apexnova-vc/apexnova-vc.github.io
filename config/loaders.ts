@@ -119,6 +119,8 @@ const fileLoader = {
   },
 };
 
+//////////////////
+
 // 这部分可以分成function, 如果是
 export default {
   cssLoader,

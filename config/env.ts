@@ -4,7 +4,7 @@ import path from "path";
 import dotenv from "dotenv";
 import dotenvExpand from "dotenv-expand";
 
-import paths from "./paths.ts";
+import paths from "./paths";
 
 // Make sure that including paths.ts after env.js will read .env variables.
 // delete require.cache[require.resolve("./paths.ts")];

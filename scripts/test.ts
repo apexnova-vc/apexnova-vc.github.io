@@ -1,4 +1,4 @@
-import "../config/tests.cjs";
+import "../config/util/tests";
 
 process.on("unhandledRejection", (err) => {
   throw err;
@@ -11,7 +11,7 @@ import { execSync } from "child_process";
 
 import { jest } from "jest";
 
-let argv = process.argv.slice(2);
+const argv = process.argv.slice(2);
 
 function isInGitRepository() {
   try {

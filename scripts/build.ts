@@ -1,4 +1,4 @@
-import "../config/prod.js";
+import "../config/util/prod";
 
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will

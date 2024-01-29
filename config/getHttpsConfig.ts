@@ -1,13 +1,10 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-"use strict";
+import crypto from "crypto";
+import fs from "fs";
+import path from "path";
 
-const crypto = require("crypto");
-const fs = require("fs");
-const path = require("path");
+import chalk from "react-dev-utils/chalk";
 
-const chalk = require("react-dev-utils/chalk");
-
-const paths = require("./paths.ts");
+import paths from "./paths.ts";
 
 // Ensure the certificate and key provided are valid and if not
 // throw an easy to debug error
@@ -48,7 +45,7 @@ function readEnvFile(file, type) {
 
 // Get the https config
 // Return cert files if provided in env, otherwise just true or false
-function getHttpsConfig() {
+export default function getHttpsConfig() {
   const { SSL_CRT_FILE, SSL_KEY_FILE, HTTPS } = process.env;
   const isHttps = HTTPS === "true";
 
@@ -65,5 +62,3 @@ function getHttpsConfig() {
   }
   return isHttps;
 }
-
-module.exports = getHttpsConfig;
