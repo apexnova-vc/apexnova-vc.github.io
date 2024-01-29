@@ -1,4 +1,4 @@
-import "./dev.js";
+import "../config/dev.js";
 process.on("unhandledRejection", (err) => {
   throw err;
 });
