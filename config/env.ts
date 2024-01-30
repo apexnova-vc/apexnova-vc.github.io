@@ -40,7 +40,7 @@ const dotenvFiles = [
 
 dotenvFiles.forEach((dotenvFile) => {
   if (fs.existsSync(dotenvFile as string)) {
-    dotenvExpand(
+    dotenvExpand.expand(
       dotenv.config({
         path: dotenvFile as string,
       }),
