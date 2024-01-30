@@ -25,7 +25,7 @@ import webpack from "webpack";
 
 import paths from "../config/paths.ts";
 import { checkBrowsers } from "../config/util/browsersHelper";
-import configFactory from "../config/webpack.config.cjs";
+import configFactory from "../config/webpack.config";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

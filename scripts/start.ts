@@ -28,7 +28,7 @@ import WebpackDevServer from "webpack-dev-server";
 import getClientEnvironment from "../config/env.ts";
 import paths from "../config/paths.ts";
 import { checkBrowsers } from "../config/util/browsersHelper";
-import configFactory from "../config/webpack.config.cjs";
+import configFactory from "../config/webpack.config";
 import createDevServerConfig from "../config/webpackDevServer.config.ts";
 
 const __filename = fileURLToPath(import.meta.url);
