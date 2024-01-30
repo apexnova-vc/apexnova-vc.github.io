@@ -2,11 +2,14 @@ version: "3"
 services:
   web:
     image: ghcr.io/apexnova-vc/sample_web:latest # Use the image from GitHub Container Registry
-    build: . # Build the image using the Dockerfile in the current directory
-    working_dir: /app # Set the working directory in the container
+    build:
+      context: . # Set the build context to the current directory
+      dockerfile: Dockerfile # Specify the Dockerfile (useful if you have multiple Dockerfiles, e.g., one for development and one for production)
+    working_dir: /com.docker.devenvironments.code # Set the working directory in the container
     ports:
       - "5000:3000" # Map port 3000 of the container to port 5000 on the host
     volumes:
-      - .:/app # Mount the current directory into the /app directory in the container
+      - .:/com.docker.devenvironments.code # Mount the current directory into the working directory in the container
+      - /com.docker.devenvironments.code/node_modules # Create a volume for node_modules to prevent the local node_modules from being mounted into the container
     environment:
       - NODE_ENV=development # Set the environment variable for development mode
