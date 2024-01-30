@@ -4,7 +4,7 @@ import path from "path";
 import chalk from "chalk";
 
 function checkRequiredFiles(files: string[]): boolean {
-  let currentFilePath: string;
+  let currentFilePath = "";
   try {
     files.forEach((filePath) => {
       currentFilePath = filePath;

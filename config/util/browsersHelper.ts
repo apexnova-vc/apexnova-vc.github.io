@@ -72,9 +72,7 @@ async function checkBrowsers(
     browserslist.clearCaches();
     console.log();
     console.log(
-      `${chalk.green("Set target browsers:")} ${chalk.cyan(
-        defaultBrowsers.join(", "),
-      )}`,
+      `${chalk.green("Set target browsers:")} ${chalk.cyan(defaultBrowsers)}`,
     );
     console.log();
   } catch (error) {
