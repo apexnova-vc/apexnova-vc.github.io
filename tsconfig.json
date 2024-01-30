@@ -26,5 +26,10 @@
   ], // Specifies the location of type definitions
   "include": [
     "src"
-  ]
+  ],
+  "types": [
+    "node",
+    "jest",
+    "@testing-library/jest-dom"
+  ],
 }

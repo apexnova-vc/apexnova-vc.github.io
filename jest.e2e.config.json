@@ -5,39 +5,38 @@
     "src/**/*.{js,jsx,ts,tsx}",
     "!**/*.d.ts"
   ],
+  "roots": [
+    "<rootDir>/src"
+  ],
   "testMatch": [
     "<rootDir>/src/**/*e2e.test.(j|t)s?(x)"
   ],
   "testPathIgnorePatterns": [
     "/node_modules/"
   ],
-  "transform": {
-    "^.+\\.(js|jsx|mjs)$": "ts-jest",
-    "^.+\\.tsx?$": "ts-jest",
-    "^.+\\.css$": "ts-jest",
-    "^(?!.*\\.(js|jsx|mjs|css|json)$)": "ts-jest"
-  },
   "transformIgnorePatterns": [
-    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
+    "/node_modules/"
   ],
   "testEnvironmentOptions": {
     "url": "http://localhost"
   },
+  "modulePaths": [],
   "moduleNameMapper": {
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "^react-native$": "react-native-web"
   },
   "moduleFileExtensions": [
-    "ts",
-    "tsx",
     "js",
-    "jsx",
     "json",
+    "jsx",
+    "mjs",
     "node",
-    "mjs"
+    "ts",
+    "tsx"
   ],
-  "globals": {
-    "ts-jest": {
-      "tsConfigFile": "<rootDir>/tsconfig.json"
-    }
-  }
+  "watchPlugins": [
+    "jest-watch-typeahead/filename",
+    "jest-watch-typeahead/testname"
+  ],
+  "preset": "ts-jest/presets/js-with-ts"
 }
