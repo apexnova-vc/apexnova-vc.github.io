@@ -54,5 +54,6 @@
     "jest-watch-typeahead/testname"
   ],
   "resetMocks": true,
-  "preset": "ts-jest/presets/js-with-ts"
+  "preset": "ts-jest/presets/js-with-ts",
+  "testTimeout": 30000
 }

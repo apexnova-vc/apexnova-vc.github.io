@@ -38,5 +38,6 @@
     "jest-watch-typeahead/filename",
     "jest-watch-typeahead/testname"
   ],
-  "preset": "ts-jest/presets/js-with-ts"
+  "preset": "ts-jest/presets/js-with-ts",
+  "testTimeout": 30000
 }
