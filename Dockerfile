@@ -14,7 +14,7 @@ RUN npm ci
 COPY . .
 
 # Second stage: Ubuntu base image for running the app
-FROM --platform=linux/amd64 ubuntu:20.04
+FROM --platform=linux/amd64 ubuntu:22.04
 
 # Set the working directory in the Ubuntu container
 WORKDIR /com.docker.devenvironments.code
@@ -23,9 +23,12 @@ WORKDIR /com.docker.devenvironments.code
 COPY --from=build-stage /com.docker.devenvironments.code ./
 
 # Install Node.js and any other Ubuntu packages you need
-RUN apt-get update && apt-get install -y curl && \
-  curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
+RUN apt-get update && apt-get install -y curl gnupg software-properties-common git && \
+  curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
   apt-get install -y nodejs
+
+# Install Puppeteer and its browser dependencies
+RUN npm i --no-optional && npx puppeteer install browsers chrome
 
 # Add metadata to the image to describe which repo this image belongs to
 LABEL org.opencontainers.image.source="https://github.com/apexnova-vc/sample_web"
