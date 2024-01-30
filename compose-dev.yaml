@@ -10,6 +10,5 @@ services:
       - "5000:3000" # Map port 3000 of the container to port 5000 on the host
     volumes:
       - .:/com.docker.devenvironments.code # Mount the current directory into the working directory in the container
-      - /com.docker.devenvironments.code/node_modules # Create a volume for node_modules to prevent the local node_modules from being mounted into the container
     environment:
       - NODE_ENV=development # Set the environment variable for development mode
