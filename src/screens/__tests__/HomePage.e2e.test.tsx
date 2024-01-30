@@ -7,7 +7,11 @@ describe("HomePage E2E test", () => {
   beforeEach(async () => {
     browser = await puppeteer.launch({
       headless: "new",
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--remote-debugging-port=9222",
+      ],
     });
   });
 
