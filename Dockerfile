@@ -7,10 +7,6 @@ WORKDIR /app
 # Copy package.json and package-lock.json into the working directory
 COPY package*.json ./
 
-# Install Puppeteer dependencies
-# If you want to skip downloading the Chromium bundled with Puppeteer and use system-installed Chrome, set PUPPETEER_SKIP_CHROMIUM_DOWNLOAD to true
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-
 # Install any needed packages specified in package.json
 RUN npm ci
 
