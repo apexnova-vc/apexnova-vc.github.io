@@ -2,7 +2,7 @@
   "name": "sample_web",
   "version": "0.1.0",
   "type": "module",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.8.10",
