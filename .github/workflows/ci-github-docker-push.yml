@@ -36,9 +36,9 @@ jobs:
         context: .
         push: true
         tags: |
-          ghcr.io/apexnova-vc/sample_web:latest
-          ghcr.io/apexnova-vc/sample_web:${{ github.sha }}
-          ghcr.io/apexnova-vc/sample_web:${{ steps.extract_branch.outputs.branch }}-${{ github.sha }}
+          ghcr.io/apexnova-vc/web:latest
+          ghcr.io/apexnova-vc/web:${{ github.sha }}
+          ghcr.io/apexnova-vc/web:${{ steps.extract_branch.outputs.branch }}-${{ github.sha }}
         platforms: ${{ matrix.platform }}
-        cache-from: type=registry,ref=ghcr.io/apexnova-vc/sample_web:cache
+        cache-from: type=registry,ref=ghcr.io/apexnova-vc/web:cache
         cache-to: type=inline
