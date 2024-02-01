@@ -6,8 +6,6 @@ services:
       context: . # Set the build context to the current directory
       dockerfile: Dockerfile # Specify the Dockerfile (useful if you have multiple Dockerfiles, e.g., one for development and one for production)
     working_dir: /com.docker.devenvironments.code # Set the working directory in the container
-    ports:
-      - "5051:3000" # Map port 3000 of the container to port 5000 on the host
     volumes:
       - .:/com.docker.devenvironments.code # Mount the current directory into the working directory in the container
     environment:
