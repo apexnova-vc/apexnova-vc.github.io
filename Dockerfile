@@ -45,4 +45,4 @@ RUN npm install -g serve
 LABEL org.opencontainers.image.source="https://github.com/apexnova-vc/web"
 
 # Define the command to run the app
-CMD ["npm", "run", "start"]
+CMD ["tail", "-f", "/dev/null"]
