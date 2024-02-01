@@ -14,7 +14,7 @@ RUN npm ci
 COPY . .
 
 # Second stage: Ubuntu base image for running the app
-FROM --platform=linux/amd64 ubuntu:22.04
+FROM --platform=linux/arm64 ubuntu:22.04
 
 # Set the working directory in the Ubuntu container
 WORKDIR /com.docker.devenvironments.code

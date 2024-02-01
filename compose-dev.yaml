@@ -1,13 +1,16 @@
-version: "3"
+version: "3.9"
 services:
   web:
     image: ghcr.io/apexnova-vc/web:latest # Use the image from GitHub Container Registry
+    platform: linux/arm64 # Specify the platform for Apple Silicon
     build:
       context: . # Set the build context to the current directory
       dockerfile: Dockerfile # Specify the Dockerfile (useful if you have multiple Dockerfiles, e.g., one for development and one for production)
+      args:
+        - BUILDPLATFORM=linux/arm64
     working_dir: /com.docker.devenvironments.code # Set the working directory in the container
     ports:
-      - "6060:3000" # Map port 3000 of the container to port 5000 on the host
+      - "6061:3000" # Map port 3000 of the container to port 5000 on the host
     volumes:
       - .:/com.docker.devenvironments.code # Mount the current directory into the working directory in the container
     environment:
