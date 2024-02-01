@@ -42,7 +42,7 @@ RUN npm i && npx puppeteer browsers install chrome
 RUN npm install -g serve
 
 # Add metadata to the image to describe which repo this image belongs to
-LABEL org.opencontainers.image.source="https://github.com/apexnova-vc/sample_web"
+LABEL org.opencontainers.image.source="https://github.com/apexnova-vc/web"
 
 # Define the command to run the app
 CMD ["npm", "run", "start"]
