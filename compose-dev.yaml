@@ -1,7 +1,7 @@
 version: "3"
 services:
   web:
-    image: ghcr.io/apexnova-vc/sample_web:latest # Use the image from GitHub Container Registry
+    image: ghcr.io/apexnova-vc/web:latest # Use the image from GitHub Container Registry
     build:
       context: . # Set the build context to the current directory
       dockerfile: Dockerfile # Specify the Dockerfile (useful if you have multiple Dockerfiles, e.g., one for development and one for production)
