@@ -8,7 +8,6 @@ services:
       context: . # Set the build context to the current directory
       dockerfile: Dockerfile # Specify the Dockerfile
       # Specify the target platform for the build
-      platform: linux/arm64
     working_dir: /com.docker.devenvironments.code # Set the working directory in the container
     volumes:
       - .:/com.docker.devenvironments.code # Mount the current directory into the working directory in the container
