@@ -5,7 +5,7 @@ FROM ubuntu:22.04
 WORKDIR /com.docker.devenvironments.code
 
 # Install Node.js, and other necessary packages
-RUN apt-get update && apt-get install -y curl gnupg software-properties-common git xsel wget xvfb fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst ttf-freefont --no-install-recommends && \
+RUN apt-get update && apt-get install -y curl gnupg software-properties-common git xsel wget xvfb fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst --no-install-recommends && \
     curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
     apt-get install -y nodejs && \
     # Clean up
