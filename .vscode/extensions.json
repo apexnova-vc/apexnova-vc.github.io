@@ -6,7 +6,8 @@
     "christian-kohler.npm-intellisense", // NPM Intellisense
     "bradlc.vscode-tailwindcss", // Tailwind CSS Intellisense
     "orta.vscode-jest",
-    "github.vscode-github-actions"
+    "github.vscode-github-actions",
+    "github.vscode-pull-request-github"
   ],
   "unwantedRecommendations": [
     "aaron-bond.better-comments", // Better Comments
