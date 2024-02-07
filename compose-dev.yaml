@@ -2,10 +2,13 @@ version: "3.9"
 services:
   web:
     image: ghcr.io/apexnova-vc/web:latest # Use the image from GitHub Container Registry
+    platform: linux/arm64
     privileged: true
     build:
       context: . # Set the build context to the current directory
-      dockerfile: Dockerfile # Specify the Dockerfile (useful if you have multiple Dockerfiles, e.g., one for development and one for production)
+      dockerfile: Dockerfile # Specify the Dockerfile
+      # Specify the target platform for the build
+      platform: linux/arm64
     working_dir: /com.docker.devenvironments.code # Set the working directory in the container
     volumes:
       - .:/com.docker.devenvironments.code # Mount the current directory into the working directory in the container
