@@ -1,78 +1,48 @@
-# Use the latest official Ubuntu base image
-FROM ubuntu:23.10
+# First stage: Node.js base image for building/compiling the app
+FROM node:21 as build-stage
 
-# Set the working directory in the container
+# Set the working directory in the Node.js container
 WORKDIR /com.docker.devenvironments.code
 
-# Install Node.js, and other necessary packages including the additional libraries
-RUN apt-get update && apt-get install -y \
-    apt-utils \
-    curl \
-    gnupg \
-    software-properties-common \
-    git \
-    xsel \
-    wget \
-    xvfb \
-    openssh-client \
-    fonts-ipafont-gothic \
-    fonts-wqy-zenhei \
-    fonts-thai-tlwg \
-    fonts-kacst \
-    libnss3 \
-    libasound2 \
-    libatk-bridge2.0-0 \
-    libatomic1 \
-    libcairo2 \
-    libcups2 \
-    libdouble-conversion3 \
-    libevent-2.1-7 \
-    libgbm1 \
-    libjsoncpp25 \
-    liblcms2-2 \
-    libminizip1 \
-    libopenjp2-7 \
-    libwebp7 \
-    libwebpdemux2 \
-    libwebpmux3 \
-    libwoff1 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxkbcommon0 \
-    libopus0 \
-    libpango-1.0-0 \
-    libpulse0 \
-    libsnappy1v5 \
-    libgtk-3-0 \
-    libxrandr2 \
-    libxnvctrl0 \
-    libxslt1.1 \
-    --no-install-recommends && \
-    curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
-    apt-get install -y nodejs && \
-    # Clean up
-    apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Set environment variable to prevent Puppeteer from downloading Chromium
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-
-# Copy package.json and package-lock.json (if available) to the working directory
+# Copy package.json and package-lock.json (if available) into the working directory
 COPY package*.json ./
 
 # Install dependencies
-RUN npm i
+RUN npm ci
 
-# Copy the rest of your source code into the container
+# Copy the rest of your source code
 COPY . .
 
-# Install Puppeteer without downloading the default Chromium
-RUN npm i puppeteer
+# Second stage: Ubuntu base image for running the app
+FROM --platform=linux/amd64 ubuntu:latest
 
-# Optionally, install serve to serve the application, if necessary
+# Set the working directory in the Ubuntu container
+WORKDIR /com.docker.devenvironments.code
+
+# Copy the built app from the previous stage into this stage
+COPY --from=build-stage /com.docker.devenvironments.code ./
+
+# Install Node.js and any other Ubuntu packages you need
+RUN apt-get update && apt-get install -y curl gnupg software-properties-common git xsel && \
+  curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
+  apt-get install -y nodejs
+
+# Install Google Chrome Stable and fonts
+# Note: this installs the necessary libs to make the browser work with Puppeteer.
+RUN apt-get update && apt-get install gnupg wget -y && \
+  wget --quiet --output-document=- https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /etc/apt/trusted.gpg.d/google-archive.gpg && \
+  sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' && \
+  apt-get update && \
+  apt-get install google-chrome-stable -y --no-install-recommends && \
+  rm -rf /var/lib/apt/lists/*
+
+# Install Puppeteer and its browser dependencies
+RUN npm i && npx puppeteer browsers install chrome
+
 RUN npm install -g serve
 
-# Add metadata to the image to describe which project this image belongs to
+# Add metadata to the image to describe which repo this image belongs to
 LABEL org.opencontainers.image.source="https://github.com/apexnova-vc/web"
 
-# Define the command to run your app (adjust as necessary)
+# Define the command to run the app
 CMD ["tail", "-f", "/dev/null"]
