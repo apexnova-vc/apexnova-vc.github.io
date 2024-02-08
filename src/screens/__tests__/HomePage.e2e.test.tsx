@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import { Browser } from "puppeteer";
 
-// 
+//
 /*
 Without --remote-debugging-port=53249 etc flag, pupeeter will try to launch a 
 browser with in the container.
@@ -27,13 +27,11 @@ describe("HomePage E2E test", () => {
         "--disable-setuid-sandbox",
         // only add these follow up lines if you want to test uisng host browser,
         // see read.me for instructions on how to test on host
-        // "--remote-debugging-port=53249", 
+        // "--remote-debugging-port=53249",
         // "--remote-debugging-address=0.0.0.0",
       ],
       headless: "new",
     });
-
-
   });
 
   afterEach(async () => {
@@ -53,8 +51,5 @@ describe("HomePage E2E test", () => {
     const textContent = await page.evaluate(() => document.body.textContent);
 
     expect(textContent).toContain("Welcome to React");
-
-
   });
 });
-
