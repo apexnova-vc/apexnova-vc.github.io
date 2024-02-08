@@ -1,11 +1,12 @@
 # Use the latest official Ubuntu base image
-FROM ubuntu:latest
+FROM ubuntu:23.10
 
 # Set the working directory in the container
 WORKDIR /com.docker.devenvironments.code
 
 # Install Node.js, and other necessary packages including the additional libraries
 RUN apt-get update && apt-get install -y \
+    apt-utils \
     curl \
     gnupg \
     software-properties-common \
@@ -59,7 +60,7 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm i
 
 # Copy the rest of your source code into the container
 COPY . .
