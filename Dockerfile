@@ -18,7 +18,6 @@ RUN apt-get update && apt-get install -y \
     fonts-wqy-zenhei \
     fonts-thai-tlwg \
     fonts-kacst \
-    ttf-mscorefonts-installer \
     libnss3 \
     libasound2 \
     libatk-bridge2.0-0 \
